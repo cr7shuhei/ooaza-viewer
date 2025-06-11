@@ -20,7 +20,7 @@
       try {
         const res = await fetch(url);
         const data = await res.json();
-        return data.results.largeArea;  // ← ここを修正！
+        return data.results.lv01Nm || "情報なし";  // ← こちらが正しいキーです
       } catch {
         return "住所取得に失敗";
       }
@@ -31,7 +31,7 @@
         const lat = pos.coords.latitude;
         const lon = pos.coords.longitude;
         const address = await getAddress(lat, lon);
-        document.getElementById("status").textContent = `大字: ${address}`;
+        document.getElementById("status").textContent = `大字（町丁目）: ${address}`;
       }, err => {
         document.getElementById("status").textContent = "位置情報エラー: " + err.message;
       });
