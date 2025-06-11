@@ -20,7 +20,7 @@
       try {
         const res = await fetch(url);
         const data = await res.json();
-        return data.results.lv03Nm;
+        return data.results.largeArea;  // ← ここを修正！
       } catch {
         return "住所取得に失敗";
       }
